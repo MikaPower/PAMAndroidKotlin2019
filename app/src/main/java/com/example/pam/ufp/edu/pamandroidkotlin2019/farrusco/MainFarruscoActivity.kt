@@ -45,7 +45,7 @@ class MainFarruscoActivity : AppCompatActivity() {
 
         }
 
-        imageButtonLeft.setOnClickListener{
+        imageButtonLeft.setOnClickListener {
             setFarruscoMovementAndLauch("6")
         }
     }
@@ -55,7 +55,7 @@ class MainFarruscoActivity : AppCompatActivity() {
         var time = editTextId.text.toString()
         var id = editTextId.text.toString()
         var queryStr = "?i=$id&m=$move&t=$time"
-        Log.e(this.javaClass.simpleName, "setFarruscoMovementandLauch(): queryStr="+queryStr)
+        Log.e(this.javaClass.simpleName, "setFarruscoMovementandLauch(): queryStr=" + queryStr)
 
 
 
@@ -66,7 +66,7 @@ class MainFarruscoActivity : AppCompatActivity() {
     private class GetHttpTask(textViewOutput: TextView) : AsyncTask<String, Unit, String>() {
         @SuppressLint("StaticFieldLeak")
         val innerTextView: TextView? = textViewOutput
-        var reply : String? = ""
+        var reply: String? = ""
         override fun doInBackground(vararg params: String?): String? {
             val url = URL("http://10.100.126.117:8888/sendFarrusco.html")
             Log.e(this.javaClass.simpleName, "doInBackground(): url=$url")
@@ -74,14 +74,14 @@ class MainFarruscoActivity : AppCompatActivity() {
             return reply
         }
 
-        override fun onPostExecute(result: String?){
+        override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-            Log.e(this.javaClass.simpleName, "result:"+ result)
+            Log.e(this.javaClass.simpleName, "result:" + result)
             innerTextView?.text = result
-    }
+        }
 
-        fun runHttpGetCall(url: String) :String?{
-        var urlTest = "10.10.40.128:8888/sendFarrusco.html?"
+        fun runHttpGetCall(url: String): String? {
+            var urlTest = "10.10.40.128:8888/sendFarrusco.html?"
             var client = OkHttpClient()
             var request = Request.Builder()
                 .url(url)
